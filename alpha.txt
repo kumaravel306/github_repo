@@ -1,0 +1,36 @@
+java
+    https://linuxhint.com/set-java-home-linux/
+	wget https://download.java.net/openjdk/jdk11/ri/openjdk-11+28_linux-x64_bin.tar.gz
+	sudo tar -xvf openjdk-11+28_linux-x64_bin.tar.gz -C /usr/local/bin
+	java --version
+	file $(which java)
+	file /etc/alternatives/java
+	nano .bashrc
+#set java environment variable
+	export PATH=${PATH}:/usr/local/bin/jdk-11/bin
+    export JAVA_HOME=/usr/local/bin/jdk-11
+	
+	or  
+	
+	echo "export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-arm64" >> ~/.bashrc
+    echo "export PATH=$PATH:$JAVA_HOME/bin" >> ~/.bashrc
+
+	source .bashrc
+	echo $JAVA_HOME
+	echo $PATH
+	
+maven/apache-maven-3	
+	cd /opt
+	wget https://dlcdn.apache.org/maven/maven-3/3.9.1/binaries/apache-maven-3.9.1-bin.tar.gz
+	tar -xvzf apache-maven-3.8.7-bin.tar.gz
+	mkdir maven
+	mv apache-maven-3.8.7 maven
+	cd /home/ec2-user
+	nano .bashrc
+#set maven path
+	export M2_HOME="/opt/maven/apache-maven-3.8.7"
+	export M2=$M2_HOME/bin
+	export PATH=$M2:$PATH
+	
+	source .bashrc
+	mvn -version
